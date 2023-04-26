@@ -20,6 +20,33 @@ public class Word {
         follow = new ArrayList<Follow>();
     }
 
+    public int findFollow(String word)
+    {
+        for(Follow f:follow)
+        {
+            if(f.getWord().equals(word))
+            {
+                return follow.indexOf(f);
+            }
+        }
+        return -1;
+    }
+
+    public void addFollow(Follow f)
+    {
+        follow.add(f);
+    }
+
+    public ArrayList<Follow> getFollows() {
+        return follow;
+    }
+
+    public void addFollowCount(Follow f)
+    {
+        f.setCount(f.getCount() + 1);
+    }
+
+
     @Override
     public String toString() {
         return this.word + this.follow;

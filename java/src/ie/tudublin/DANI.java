@@ -1,9 +1,7 @@
 package ie.tudublin;
 
 import java.util.ArrayList;
-
 import processing.core.PApplet;
-import processing.data.Table;
 
 public class DANI extends PApplet {
 
@@ -25,19 +23,11 @@ public class DANI extends PApplet {
 
 	public void setup() {
 		colorMode(HSB);
+		model = new ArrayList<Word>();
 		loadFile();
+		// printModel();
        
 	}
-
-
-	// public void loadFile() {
-	// 	file = loadStrings("small.txt"); // Load a text file into a String array
-	// 	for (int i = 0; i < file.length; i++)
-	// 	{
-	// 		file[i].split(" ");
-	// 	}
-
-	// }
 
 	String[] words;
 
@@ -65,13 +55,39 @@ public class DANI extends PApplet {
 					last = false;
 				}
 				
-				if(last == false)
+				if(!last)
 				{
-					words[j+1] = words[j+1].replaceAll("[^a-zA-Z ]", "");
+					words[j+1] = words[j+1].replaceAll("[^a-zA-Z ]", " ");
 					words[j+1] = words[j+1].toLowerCase();
 				}
-				System.out.println(words[j]);
 				
+				//Checks if the word is in the word bank already
+				Word word;
+				int result = findWord(words[j]);
+				
+				if(result == -1)
+				{
+					word = new Word(words[j]);
+					model.add(word);
+				}
+				else
+				{
+					word = model.get(result);
+				}
+
+				
+				// //Check for following words
+				// if(!last)
+				// {	
+				// 	if(word.findFollow(words[j+1]) == -1)
+				// 	{
+				// 		word.addFollow(new Follow(words[j+1], 1));
+				// 	}
+				// 	else
+				// 	{
+				// 		word.addFollowCount(word.getFollows().get(word.findFollow(words[j+1])));
+				// 	}
+				// }
 			}
 		}
 	}
@@ -87,18 +103,13 @@ public class DANI extends PApplet {
 		return -1;
 	}
 
-	public int findFollow(String word)
-    {
-        for(Follow f:follow)
-        {
-            if(f.getWord().equals(word))
-            {
-                return follow.indexOf(f);
-            }
-        }
-        return -1;
-    }
-
+	public void printModel()
+	{
+		for(Word w:model)
+		{
+			System.out.println(w.toString());
+		}
+	}
 
 	public void keyPressed() {
 
