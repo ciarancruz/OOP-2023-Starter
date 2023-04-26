@@ -3,6 +3,7 @@ package ie.tudublin;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import processing.data.Table;
 
 public class DANI extends PApplet {
 
@@ -22,15 +23,20 @@ public class DANI extends PApplet {
 
 	public void setup() {
 		colorMode(HSB);
-
+		loadFile();
        
 	}
 
 	public void loadFile() {
-		loadStrings("filename.txt"); // Load a text file into a String array
-		split(line, ' '); // Split a string into an array of words
-		w.replaceAll("[^\\w\\s]",""); // Remove punction characters
-		s.toLowerCase() // Convert a string to lower case 
+		String[] w = loadStrings("small.txt"); // Load a text file into a String array
+
+		//
+		for (int i = 0; i < w.length; i++)
+		{
+			w[i] = split(w[i], ' ');
+		}
+		// // w.replaceAll("[^\\w\\s]",""); // Remove punction characters
+		// s.toLowerCase() // Convert a string to lower case 
 	}
 
 	public void keyPressed() {

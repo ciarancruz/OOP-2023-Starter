@@ -28,6 +28,6 @@ public class Follow {
 
     @Override
     public String toString() {
-        return this.getWord() + this.getCount();
+        return this.getWord() + " (" + this.getCount() + ")";
     }
 }
