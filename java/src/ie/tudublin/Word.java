@@ -15,12 +15,13 @@ public class Word {
         this.word = word;
     }
 
-    public Word(String word) {
+    public Word(String word, ArrayList<Follow> follow) {
         this.word = word;
+        this.follow = follow;
     }
 
     @Override
     public String toString() {
-        
+        return this.word + this.follow;
     }
 }

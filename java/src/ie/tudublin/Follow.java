@@ -13,8 +13,8 @@ public class Follow {
         this.word = word;
     }
 
-    public String getCount() {
-        return (String) count;
+    public int getCount() {
+        return count;
     }
 
     public void setCount(int count) {
@@ -28,6 +28,6 @@ public class Follow {
 
     @Override
     public String toString() {
-        return this.word + this.count;
+        return this.getWord() + this.getCount();
     }
 }
