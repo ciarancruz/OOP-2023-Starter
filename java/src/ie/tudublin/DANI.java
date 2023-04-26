@@ -27,17 +27,30 @@ public class DANI extends PApplet {
        
 	}
 
-	public void loadFile() {
-		String[] w = loadStrings("small.txt"); // Load a text file into a String array
+	String[] file;
+	String[] words;
 
-		//
-		for (int i = 0; i < w.length; i++)
+	public void loadFile() {
+		file = loadStrings("small.txt"); // Load a text file into a String array
+		for (int i = 0; i < file.length; i++)
 		{
-			w[i] = split(w[i], ' ');
+			 file[i].split(" ");
 		}
-		// // w.replaceAll("[^\\w\\s]",""); // Remove punction characters
-		// s.toLowerCase() // Convert a string to lower case 
+
 	}
+
+	public boolean findWord(String exist) {
+		for (int i = 0; i < words.length; i++)
+		{
+			if (exist.equals(words[i]) == true)
+			{
+				return false;
+			}
+			else 
+			{
+				return true;
+			}
+		}
 
 	public void keyPressed() {
 
