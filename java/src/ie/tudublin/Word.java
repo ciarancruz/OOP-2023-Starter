@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Word {
 
-    ArrayList<Follow> follow = new ArrayList<Follow>();
+    private ArrayList<Follow> follow = new ArrayList<Follow>();
     private String word;
 
     public String getWord() {
@@ -15,9 +15,9 @@ public class Word {
         this.word = word;
     }
 
-    public Word(String word, ArrayList<Follow> follow) {
+    public Word(String word) {
         this.word = word;
-        this.follow = follow;
+        follow = new ArrayList<Follow>();
     }
 
     @Override
